@@ -1,0 +1,181 @@
+extends layout
+
+block content
+  h2(class="page_name") Brothers
+  table(width="100%")
+    tbody
+      each brother in brothers
+        tr.brother
+          td.brother-pic-container
+            img.brother-pic(src=brother.picture || "/images/default_headshot.jpg")
+          td.brother-info
+            br
+            b Name:
+            c  #{brother.name}
+            br
+            if brother.letters
+              b Letters:
+              c  #{brother.letters}
+              br
+            if brother.year
+              b Year:
+              c  #{brother.year}
+              br
+            if brother.major
+              b Major:
+              c  #{brother.major}
+              br
+            if brother.email
+              b Email:
+              c  #{brother.email}
+              br
+            if brother.position != "none"
+              b Position:
+              c  #{brother.position}
+              br
+            if brother.info
+              b Additional Information:
+              c  #{brother.info}
+            if user
+              if user.auth == true
+                td.brother-update-cont
+                  form.rem-button(action="/brothers/delete/#{brother._id}" method="post")
+                    td.brother-delete
+                      button(type='submit') Delete
+                  form.rem-button(action="/brothers/update/#{brother._id}" method="post")
+                    td.brother-update-1
+                      input(type="text" id="new-brother-name" name="name" placeholder="First and last name" value="#{brother.name}" pattern=".{2,40}" required)
+                      br
+                      input(type="text" id="new-brother-letters" name="letters" placeholder="Letters" value="#{brother.letters}" pattern=".{1,25}")
+                      br
+                      input(type="number" id="new-brother-year" name="year" placeholder="Graduation Year" value="#{brother.year}"  min="2010" max="2200" required)
+                      br
+                      input(type="text" id="new-brother-major" name="major" pattern=".{2,40}" placeholder="Major" value="#{brother.major}" )
+                      br
+                      input(type="email" id="new-brother-email" name="email" pattern=".{2,40}" placeholder="Email" value="#{brother.email}" )
+                      br
+                      input(type="text" id="new-brother-info" name="info" pattern=".{1,250}" placeholder="Additional Info" value="#{brother.info}" )
+                      br
+                      input(type="text" id="new-brother-headshot" name="picture" placeholder="Headshot link"  value="#{brother.picture}")
+                      br
+                      div(style="font-weight:bold;") Status
+                      div
+                        input(type="radio" name="status" value="active" id="new-brother-active" required)
+                        d Active
+                      div
+                        input(type="radio" name="status" value="inactive" id="new-brother-inactive" required)
+                        d Inactive
+                      div
+                        input(type="radio" name="status" value="pledge" id="new-brother-pledge" required)
+                        d Pledge
+                      div
+                        input(type="radio" name="status" value="elder" id="new-brother-elder" required)
+                        d Elder
+                    td.brother-update
+                      div(style="font-weight:bold;") Position
+                      div
+                        input(type="radio" name="position" value="President" required)
+                        d President
+                      div
+                        input(type="radio" name="position" value="Vice President" required)
+                        d Vice President
+                      div
+                        input(type="radio" name="position" value="Secretary" required)
+                        d Secretary
+                      div
+                        input(type="radio" name="position" value="Corresponding Secretary" required)
+                        d Corresponding Secretary
+                      div
+                        input(type="radio" name="position" value="Treasurer" required)
+                        d Treasurer
+                      div
+                        input(type="radio" name="position" value="Historian" required)
+                        d Historian
+                      div
+                        input(type="radio" name="position" value="Sergeant At Arms" required)
+                        d Sergeant At Arms
+                      div
+                        input(type="radio" name="position" value="Web Chair" required)
+                        d Web Chair
+                      div
+                        input(type="radio" name="position" value="Recruitment Chair" required)
+                        d Recruitment Chair
+                      div
+                        input(type="radio" name="position" value="House Dad" required)
+                        d House Dad
+                      div
+                        input(type="radio" name="position" value="none" required)
+                        d None of the above
+                      button(type='submit') Update
+
+  if user
+    if user.auth == true
+      div.update-brother-container(style="font-weight:bold;") NEW BROTHER
+        form(action="/brothers/new" method="post")
+          input(type="text" id="new-brother-name" name="name" placeholder="First and last name" pattern=".{2,40}" required)
+          br
+          input(type="text" id="new-brother-letters" name="letters" placeholder="Letters" pattern=".{1,25}")
+          br
+          input(type="number" id="new-brother-year" name="year" placeholder="Graduation Year"  min="2010" max="2200" required)
+          br
+          input(type="text" id="new-brother-major" name="major" pattern=".{2,40}" placeholder="Major")
+          br
+          input(type="email" id="new-brother-email" name="email" pattern=".{2,40}" placeholder="Email")
+          br
+          input(type="text" id="new-brother-info" name="info" pattern=".{1,250}" placeholder="Additional Info")
+          br
+          input(type="text" id="new-brother-headshot" name="picture" placeholder="Headshot link")
+          br
+          div(style="font-weight:bold;") Status
+          div
+            input(type="radio" name="status" value="active" id="new-brother-active" required)
+            d Active
+          div
+            input(type="radio" name="status" value="inactive" id="new-brother-inactive" required)
+            d Inactive
+          div
+            input(type="radio" name="status" value="pledge" id="new-brother-pledge" required)
+            d Pledge
+          div
+            input(type="radio" name="status" value="elder" id="new-brother-elder" required)
+            d Elder
+          div(style="font-weight:bold;") Position
+          div
+            input(type="radio" name="position" value="President" required)
+            d President
+          div
+            input(type="radio" name="position" value="Vice President" required)
+            d Vice President
+          div
+            input(type="radio" name="position" value="Secretary" required)
+            d Secretary
+          div
+            input(type="radio" name="position" value="Corresponding Secretary" required)
+            d Corresponding Secretary
+          div
+            input(type="radio" name="position" value="Treasurer" required)
+            d Treasurer
+          div
+            input(type="radio" name="position" value="Historian" required)
+            d Historian
+          div
+            input(type="radio" name="position" value="Sergeant At Arms" required)
+            d Sergeant At Arms
+          div
+            input(type="radio" name="position" value="Web Chair" required)
+            d Web Chair
+          div
+            input(type="radio" name="position" value="Recruitment Chair" required)
+            d Recruitment Chair
+          div
+            input(type="radio" name="position" value="House Dad" required)
+            d House Dad
+          div
+            input(type="radio" name="position" value="none" required)
+            d None of the above
+          input(type="submit" value="Add Brother" id="new-brother-submit")
+
+      div
+        form(action="/brothers/readFile" method="post")
+          input(type="text" name="file" placeholder="File Path" required)
+          input(type="submit" value="Add Brothers" id="new-brother-file-submit")

@@ -1,0 +1,71 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="Shortcut Icon" href="/images/favicon.ico" type="image/x-icon")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
+    //- link(rel="stylesheet", href="/stylesheets/bootstrap.min.css")
+
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")
+    //- script(src="/stylesheets/jquery.min.js")
+    //- script(src="/stylesheets/bootstrap.min.js")
+
+  body
+    div.container
+      div(id="header").row
+        div(id="logoarea").col-sm-12
+          a(href="/")
+            img.toplogo(src="/images/toplogo2.png")
+      if user
+        div.row
+          h3.col-sm-12.welcome-header Welcome #{user.username}
+
+      nav.navbar.row(id="navbar")
+        a(href="/")
+          div HOME
+        a(href="/about")
+          div ABOUT
+        a(href="/rush")
+          div RUSH
+        a(href="/brothers/active")
+          div BROTHERS
+        a(href="/elders")
+          div ELDERS
+        a(href="/composites")
+          div COMPOSITES
+        a(href="/faqs")
+          div FAQS
+        a(href="/contact")
+          div CONTACT
+        a(href="http://www.zetapsi.org" target="_blank")
+          div GRAND CHAPTER
+        if user
+          a(href="/auth/signout")
+           div SIGN OUT
+
+      div(id="block_content").row
+        block content
+
+      div(id="footer").row
+        div.row
+          div.col-xs-6.col-md-4(id="escetch")
+            img(src="/images/escetch.png")
+          div.col-xs-6.col-md-4
+            div(id="social-container")
+              a(href="https://www.facebook.com/zetapsicwru/" target="_blank")
+                i(class="fa-flag fa fa-facebook-square fa-4x ")
+              a(href="https://www.linkedin.com/groups/89513" target="_blank")
+                i(class="fa-flag fa fa-linkedin-square fa-4x ")
+          div.col-xs-12.col-md-4
+            div(id="footer-contact")
+              h3 Contact Us
+                a(href="https://www.google.com/maps/place/Zeta+Psi,+11925+Carlton+Rd,+Cleveland,+OH+44106/@41.501873,-81.6028276,17z/data=!3m1!4b1!4m2!3m1!1s0x8830fc79b3226fef:0xfd14e0d76795af6d" target="_blank")
+                  i(class="fa fa-map-marker fa-lg")
+              p Zeta Psi Fraternity, Nu Chapter
+              p 11925 Carlton Road
+              p Cleveland, Ohio, 44106
+        div(id="copyright").row Copyright © 2016 Zeta Psi International Fraternity, Inc. | Nu Chapter, Case Western Reserve University | A

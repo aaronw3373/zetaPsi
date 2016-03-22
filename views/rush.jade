@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h2(class="page_name") Rush Zeta Psi!
+  div(class="content")
+    p Every semester, after careful consideration, the Nu chapter adds new members to its ranks. As the first fraternity on Case Western's campus, we pride ourselves on our longevity. By recruiting only the best, we ensure our continued activity and prosperity on campus.
+
+    p However, do not let this selective process sway you. Our recruitment events are open to anybody interested in joining our chapter. Do not feel shy, come out to an event or two and have a good time with the brothers. Bids are extended to those who the brothers feel would make a good addition to the chapter with their individual ideas, talents, and personalities.
+
+    p With any questions, feel free to contact our recruitment chair.
+    div.rushcal-outer
+      img.rushcal(src=picture)
+    if user
+      if user.auth == true
+        div.update-rush-container
+          form(action="rush/newpic" method="post")
+            input(type="text" id="new-calandar" name="picture" placeholder="calandar link" pattern=".{2,}")
+            br
+            input(type="submit" value="Change Rush Calandar" id="new-calandar-submit")

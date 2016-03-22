@@ -1,0 +1,71 @@
+extends layout
+
+block content
+  div.content(style="padding:40px;")
+    div(id="myCarousel" class="carousel slide" data-ride="carousel")
+      ol(class="carousel-indicators")
+        li(data-target="#myCarousel" data-slide-to="0" class="active")
+        each pic, index in pics
+          li(data-target="#myCarousel" data-slide-to="#{index + 1}")
+      div(class="carousel-inner" role="listbox")
+        div(class="item active")
+          img(src="/images/slide1.png")
+        each pic in pics
+          div(class="item")
+            img(src="#{pic}")
+
+
+      a(class="left carousel-control" href="#myCarousel" role="button" data-slide="prev")
+        span(class="glyphicon glyphicon-chevron-left" aria-hidden="true")
+        span(class="sr-only")
+      a(class="right carousel-control" href="#myCarousel" role="button" data-slide="next")
+        span(class="glyphicon glyphicon-chevron-right" aria-hidden="true")
+        span(class="sr-only")
+    if user
+      if user.auth == true
+        each pic, index in pics
+          form(action="/removepic/#{index}" method="post")
+            input(type='submit' value="Remove Pic")
+            d #{pic}
+        td
+          form(action="/newpic" method="post")
+            td
+              input(type='text' name="pic" placeholder="pic link")
+              input(type='submit' value="Add Pic")
+  h2(class="page_name") Chapter News
+  div.content
+    each report in reports
+      div
+        div=(report.date.getMonth()+1 + "/" + (Number(report.date.getDate())+1) + "/" +report.date.getFullYear())
+        if user
+          if user.auth == true
+            td.brother-update-cont
+              form.rem-button(action="/deletereport/#{report._id}" method="post")
+                td.brother-update
+                  input(type='submit' value="Delete")
+        div(style="font-weight:bold; padding-left:20px;")=report.title
+        br
+        each paragraph in report.body
+          p(style="padding-left:20px;")=paragraph
+        br
+        div(style="padding-left:20px; font-style: italic;") In TKPhi,
+        div(style="padding-left:20px;")=report.author
+        br
+
+  if user
+    if user.auth
+      div(style="font-weight:bold;") New Report
+      form(action="/newReport" method="post")
+        div Date
+          br
+          input(type="Date" name="date" required)
+        div Title
+          br
+          input(type="text" name="title" required)
+        p Content
+          br
+          textarea(name="body" cols="150" rows="50")
+        div Author
+          br
+          input(type="text" name="author" required)
+        input(type="submit" value="Submit Report")

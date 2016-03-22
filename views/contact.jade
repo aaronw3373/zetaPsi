@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h2(class="page_name") Contact
+  div(class="content")
+    div(id="mailing")
+      h2 Mailing Address
+      p(class="local") Zeta Psi Fraternity, Nu Chapter
+      p(class="local") 11925 Carlton Road
+      p(class="local") Cleveland, Ohio, 44106
+      h2 People
+
+      div(style="font-weight:bold;") President (Φ)
+      div=people.president.name
+      div=people.president.email
+      br
+      div(style="font-weight:bold;") Recruitment Chair
+      div=people.recruitment.name
+      div=people.recruitment.email
+      br
+      div(style="font-weight:bold;") Web Chair
+      div=people.web.name
+      div=people.web.email

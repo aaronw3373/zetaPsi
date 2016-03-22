@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  form(class='auth-form' action='/auth/login', method='POST')
+    input(type='text' name='username' placeholder='Username' required autocomplete="off" autofocus)
+    input(type='text' name='password' placeholder='Password' autocomplete="off" required)
+    button(type='submit') Login
