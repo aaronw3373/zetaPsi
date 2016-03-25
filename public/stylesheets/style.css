@@ -175,6 +175,7 @@ body{
   margin-top: 10px;
   margin-bottom: 30px;
   padding-bottom: 10px;
+  min-width: 700px;
 }
 .page_name{
   padding-left: 20px;
