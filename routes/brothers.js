@@ -180,7 +180,7 @@ router.post('/readFile', function(req, res, next) {
   var sheet = workbook.Sheets[sheetName];
   var cols = ["A","B","C","D","E","F","G","H","I","J"];
 
-  for (var i = 3; i <= 52; i++) {
+  for (var i = 3; i <= 62; i++) {
     body = {
       name: sheet[cols[0]+i].v + " " + sheet[cols[1]+i].v,
       letters: sheet[cols[2]+i] == null ? "": sheet[cols[2]+i].v,
@@ -188,7 +188,7 @@ router.post('/readFile', function(req, res, next) {
       major: sheet[cols[4]+i] == null ? "": sheet[cols[4]+i].v,
       email: sheet[cols[5]+i] == null ? "": sheet[cols[5]+i].v,
       info: sheet[cols[6]+i] == null ? "": sheet[cols[6]+i].v,
-      picture: sheet[cols[7]+i] == null ? "/images/default_headshot.jpg": sheet[cols[6]+i].v,
+      picture: sheet[cols[7]+i] == null ? "/images/default_headshots.jpg": sheet[cols[7]+i].v,
       status: sheet[cols[8]+i].v,
       position: sheet[cols[9]+i] == null ? "none": sheet[cols[9]+i].v
     }
