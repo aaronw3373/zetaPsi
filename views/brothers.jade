@@ -1,7 +1,16 @@
 extends layout
 
 block content
-  h2(class="page_name") Brothers
+  h2(class="page_name").col-xs-4 Brothers
+  nav.navbar.col-xs-8(id="bro-navbar")
+    a(href="/brothers/active")
+      div Active
+    a(href="/brothers/elder")
+      div Elder
+    a(href="/brothers/pledge")
+      div New Members
+    a(href="/brothers/inactive")
+      div Inactive
   table(width="100%")
     tbody
       each brother in brothers

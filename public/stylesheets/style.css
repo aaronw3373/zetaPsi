@@ -5,7 +5,7 @@ body{
   background-image:url('/images/bg.png');
   background-repeat: repeat-x;
   background-color: #f1f1f1;
-  min-width: 750px;
+  min-width: 700px;
   font-size: 16px;
 }
 #logoarea{
@@ -16,6 +16,9 @@ body{
   color: white;
   margin: 0;
   text-align: center;
+}
+.navbar{
+  margin-bottom: 0;
 }
 #navbar{
   padding:10px;
@@ -60,6 +63,47 @@ body{
 #navbar a div{
   margin-bottom: 4px;
 }
+
+
+#bro-navbar{
+  padding: 15px;
+}
+#bro-navbar a{
+  text-decoration: none;
+  height: 34px;
+  margin-right: 2px;
+  padding-top: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+  vertical-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: "PT Sans", sans-serif;
+  border: solid 2px black;
+  border-radius: 8px;
+  color: black;
+  overflow: hidden;
+  float: left;
+}
+#bro-navbar a:hover{
+  text-decoration: none;
+  height: 34px;
+  padding-top: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+  vertical-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: "PT Sans", sans-serif;
+  border: solid 2px gold;
+  border-radius: 8px;
+  color: gold;
+  overflow: hidden;
+  float: left;
+}
+
 #footer{
   text-align: center;
   vertical-align: center;
