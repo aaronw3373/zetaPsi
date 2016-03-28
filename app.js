@@ -45,8 +45,6 @@ app.use('/auth', authRoutes);
 
 
 
-
-
 var home = require('./routes/index');
 var about = require('./routes/about');
 var rush = require('./routes/rush');
