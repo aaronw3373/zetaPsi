@@ -11,7 +11,7 @@ var isAuthenticated = function(req, res, next) {
   res.redirect('/');
 }
 
-var rushPic = "/images/rushcalSpring2016.jpg";
+var rushPic = "/images/Falll2016RushCal.png";
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   if (req.user!=null){
